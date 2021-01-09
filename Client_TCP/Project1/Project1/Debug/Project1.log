@@ -1,3 +1,1 @@
-﻿  main.c
-C:\Users\bswar\Desktop\Netze2\Socket\Client_TCP\Project1\Project1\main.c(78,18): warning C4013: "write" undefiniert; Annahme: extern mit Rückgabetyp int
-  Project1.vcxproj -> C:\Users\bswar\Desktop\Netze2\Socket\Client_TCP\Project1\Debug\Project1.exe
+﻿  Project1.vcxproj -> C:\Users\bswar\Desktop\Netze2\Socket\Client_TCP\Project1\Debug\Project1.exe

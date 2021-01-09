@@ -81,31 +81,18 @@ int main() {
         return -1;
     }
 
-
-    if (bytest_recv == -1)
-        printf("Error\n");
-
-
-
-
-    if (sendto(sd, sbuf, sbuflen, 0, (struct sockaddr*)&saddr, sizeof(saddr)) != sbuflen) {
-
-        perror("sendto");
-        return -1;
-    }
-
     Sleep(2000);
 
     bytest_recv = recv(sd, sbuf, sizeof(sbuf), 0);
     write(1, sbuf, bytest_recv);
 
-
     if (bytest_recv == -1)
         printf("Error\n");
+   
 
     closesocket(sd);
     WSACleanup();
-
+        
 
     return 0;
 }
