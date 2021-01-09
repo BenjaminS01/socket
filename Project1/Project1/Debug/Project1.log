@@ -1,3 +1,0 @@
-﻿  main.c
-C:\Users\bswar\Desktop\Netze2\Socket\Project1\Project1\main.c(29,14): warning C4101: "num_recvd": Unreferenzierte lokale Variable
-  Project1.vcxproj -> C:\Users\bswar\Desktop\Netze2\Socket\Project1\Debug\Project1.exe
