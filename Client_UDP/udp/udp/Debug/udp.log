@@ -1,3 +1,3 @@
 ﻿  main.c
-C:\Users\bswar\Desktop\Netze2\Socket\Client_UDP\udp\udp\main.c(74,10): warning C4013: "write" undefiniert; Annahme: extern mit Rückgabetyp int
+C:\Users\bswar\Desktop\Netze2\Socket\Client_UDP\udp\udp\main.c(77,10): warning C4013: "write" undefiniert; Annahme: extern mit Rückgabetyp int
   udp.vcxproj -> C:\Users\bswar\Desktop\Netze2\Socket\Client_UDP\udp\Debug\udp.exe

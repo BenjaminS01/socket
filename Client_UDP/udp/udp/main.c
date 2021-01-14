@@ -18,7 +18,7 @@ typedef int socklen_t;
 #endif
 */
 
-#define BUFFERSIZE 100
+#define BUFFERSIZE 35
 #define PORT 4680
 #define SERVER "87.118.112.203"
 
@@ -34,6 +34,7 @@ int main() {
     char sbuf[BUFFERSIZE];
     int sbuflen;
     int err;
+    socklen_t          saddrlen;
 
     WSADATA wsaData;   // if this doesn't work
     //WSAData wsaData; // then try this instead
@@ -59,19 +60,21 @@ int main() {
     strcpy(sbuf, "Swarovsky, Benjamin");
     sbuflen = strlen(sbuf);
 
+    saddrlen = sizeof(saddr);
+
     if (sendto(sd, sbuf, sbuflen, 0, (struct sockaddr*)&saddr, sizeof(saddr)) != sbuflen) {
 
         perror("sendto");
         return -1;
     }
 
-    Sleep(2000);
+  
 
     int bytest_recv = 0;
 
-    bytest_recv = recv(sd, sbuf, sizeof(sbuf), 0);
+    sbuflen = recvfrom(sd, sbuf, BUFFERSIZE, 0, (struct sockaddr*)&saddr, &saddrlen);
 
-    write(1, sbuf, bytest_recv);
+    write(1, sbuf, sbuflen);
 
 
 
@@ -81,12 +84,12 @@ int main() {
         return -1;
     }
 
-    Sleep(2000);
 
-    bytest_recv = recv(sd, sbuf, sizeof(sbuf), 0);
-    write(1, sbuf, bytest_recv);
 
-    if (bytest_recv == -1)
+    sbuflen = recvfrom(sd, sbuf, BUFFERSIZE, 0, (struct sockaddr*)&saddr, &saddrlen);
+    write(1, sbuf, sbuflen);
+
+    if (sbuflen == -1)
         printf("Error\n");
    
 

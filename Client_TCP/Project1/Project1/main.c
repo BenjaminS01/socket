@@ -18,15 +18,13 @@ typedef int socklen_t;
 #endif
 */
 
-#define BUFFERSIZE 100
+#define BUFFERSIZE 35
 #define PORT 7923
 #define SERVER "87.118.112.203"
 
 
 
 int main() {
-
-    
 
         SOCKET sd;
         struct sockaddr_in saddr;
@@ -68,38 +66,38 @@ int main() {
             perror("send");     
             return -1; 
         }
-
-        Sleep(2000);
+     //   printf("%s\n", sbuf);
 
         int bytest_recv = 0;
 
-        bytest_recv = recv(sd, sbuf, sizeof(sbuf), 0);
+        sbuflen = recv(sd, sbuf, sizeof(sbuf), 0);
         
-            write(1, sbuf, bytest_recv);
-            if (send(sd, sbuf, sbuflen, 0) != sbuflen) {
-                perror("send");
-                return -1;
-            }
+            write(1, sbuf, sbuflen);
             
 
-        if (bytest_recv == -1)
-            printf("Error\n");
-
+            if (sbuflen == -1) {
+                printf("Error\n");
+                return -1;
+        }
+            
+      //      printf("\n%s\n", sbuf);
         
-
+            
         if (send(sd, sbuf, sbuflen, 0) != sbuflen) {
             perror("send");
             return -1;
         }
+      //  printf("\n%s\n", sbuf);
 
-        Sleep(2000);
-
-        bytest_recv = recv(sd, sbuf, sizeof(sbuf), 0);
-            write(1, sbuf, bytest_recv);
+        sbuflen = recv(sd, sbuf, sizeof(sbuf), 0);
+            write(1, sbuf, sbuflen);
         
 
-        if (bytest_recv == -1)
-            printf("Error\n");
+            if (bytest_recv == -1) {
+                printf("Error\n");
+                return -1;
+        }
+     //       printf("\n%s\n", sbuf);
 
         closesocket(sd);
         WSACleanup();
